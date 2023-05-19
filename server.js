@@ -1,6 +1,7 @@
 const { log } = require('node:console');
 const http=require('node:http');
 const { connect } = require('node:http2');
+const { parse } = require('node:querystring');
 
 const host= "127.0.0.1"
 const port= 5500
@@ -31,15 +32,16 @@ const server = http.createServer((req, res)=>{
     } else if(req.url === "/comments"){
         if(req.method=== "POST"){
             res.statusCode=200;
-            res.setHeader("Content-Type", "application/json");
+            res.setHeader('Content-Type', 'application/json');
             body="";
             req.on("data", (chunk)=>{
-                body+=chunk;
+                body+=chunk.toString();
             });
-            req.on("end", ()=>{
-                comm.push(JSON.parse(body));
-                res.end(JSON.stringify(comm));
 
+            req.on("end", ()=>{
+                comm= parse(body);
+                console.log(comm);
+                res.end("Moi server horosh!");
             });
    
         }
