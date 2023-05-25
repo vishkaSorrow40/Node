@@ -3,8 +3,10 @@ const http=require('node:http');
 const { connect } = require('node:http2');
 const { parse } = require('node:querystring');
 
+
 const host= "127.0.0.1"
 const port= 5500
+
 
 var users={'user_agent': 0};
 var comm=[];
@@ -39,9 +41,9 @@ const server = http.createServer((req, res)=>{
             });
 
             req.on("end", ()=>{
-                comm= parse(body);
+                comm.push(JSON.parse(body));
                 console.log(comm);
-                res.end("Moi server horosh!");
+                res.end(JSON.stringify(comm));
             });
    
         }
