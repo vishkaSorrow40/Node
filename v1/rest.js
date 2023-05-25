@@ -1,6 +1,8 @@
 const express=require('express');
 const  router = express.Router();
 
+
+
 var users={'user_agent': 0};
 var comm=[];
 
@@ -32,7 +34,7 @@ router.post('/comments', function(req,res){
     req.on("end", ()=>{
         comm.push(JSON.parse(body));
         console.log(comm);
-        res.send(JSON.stringify(comm));
+        res.end(JSON.stringify(comm));
     });
 
 });
