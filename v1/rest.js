@@ -1,10 +1,20 @@
 const express=require('express');
 const  router = express.Router();
+const bPasrser=require('body-parser');
 
-
+router.use(express.json());
 
 var users={'user_agent': 0};
 var comm=[];
+
+function checkAutorizetion(res, req,next){
+    const apiKey=req.query.apiKey;
+    if (apiKey!== 'kotiki'){
+        res.status(401).send("are you kotick?????");
+    } else{
+        next();
+    }
+}
 
 router.get('/', function(req,res){
     res.send("Hello, you terned  out on my server!");
@@ -37,6 +47,11 @@ router.post('/comments', function(req,res){
         res.end(JSON.stringify(comm));
     });
 
+});
+
+
+router.post("/users", checkAutorizetion, (res, req) =>{
+    res.send("you are a truely kotick!!!!");
 });
 
 module.exports = router;

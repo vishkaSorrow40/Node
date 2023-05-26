@@ -18,7 +18,9 @@
   },
   "homepage": "https://github.com/vishkaSorrow40/Node#readme",
   "dependencies": {
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "helmet": "^7.0.0",
+    "morgan": "^1.10.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.22"
