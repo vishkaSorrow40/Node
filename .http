@@ -8,12 +8,11 @@ Content-Type: text/html
 
 ###
 
-POST /comments HTTP/1.1
+POST /v1/comments HTTP/1.1
 Host: 127.0.0.1:5500
 Content-Type: application/json
 
 {
-    "text": "Some comments"
 }
 ###
 GET /v1 HTTP/1.1
@@ -32,6 +31,15 @@ Content-Type: application/json
 
 {
     "text": "Some comments"
+}
+
+###
+
+POST /v1/comments HTTP/1.1
+Host: 127.0.0.1:5500
+Content-Type: application/json
+
+{
 }
 
 ###
