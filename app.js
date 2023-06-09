@@ -13,7 +13,6 @@ const app=express();
 
 app.use(morgan('dev'));
 app.use(helmet());
-
 app.use(express.static('public'));
 app.use('/v1', restApi);
 

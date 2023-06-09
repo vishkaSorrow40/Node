@@ -1,12 +1,9 @@
 const express = require('express');
 const router = express.Router();
-// const bPasrser = require('body-parser');
 
-// const bodyJson = bPasrser.json({
-//     extended: false,
-// });
 
 router.use(express.json());
+const commentsController = require("../controllers/comm");
 
 var users = { 'user_agent': 0 };
 var comm = [];
@@ -16,6 +13,11 @@ var comm = [];
 router.get('/', function (req, res) {
     res.send("Hello, you terned  out on my server!");
 });
+
+router.get("/dbcomments", commentsController.getAllComments);
+router.get("/dbcomments/:id", commentsController.getComment);
+router.post("/dbcomments", express.json(), commentsController.postAddComments);
+
 
 router.get('/stats', function (req, res) {
     users.user_agent++;
@@ -36,17 +38,6 @@ router.post('/comments', validateBody, (req, res) => {
 
     console.log(comm);
     res.status(200).json(comm);
-    // res.send(comm);
-
-    // body="";
-    // req.on("data", (chunk)=>{
-    //     body+=chunk.toString();
-    // });
-    // req.on("end", ()=>{
-    //     comm.push(JSON.parse(body));
-    //     console.log(comm);
-    //     res.send(JSON.stringify(comm));
-    // });
 });
 
 function validateBody(req, res, next) {
@@ -67,16 +58,7 @@ router.post("/users", checkAutorizetion, (req, res) => {
 });
 
 
-    // return (req, res, next) =>{ 
-    //     const {error}=kot.validate(res.body);
-    //     if(error){
-    //         return res.status(400).json({
-    //             error: error.detalis[0].message
-    //         });
-    //     }
-    //     next();
-    // };
-// }
+
 
 function checkAutorizetion(req, res, next) {
     const { apiKey } = req.query;
@@ -86,6 +68,8 @@ function checkAutorizetion(req, res, next) {
         next();
     }
 };
+
+
 
 
 module.exports = router;
