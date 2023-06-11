@@ -82,3 +82,106 @@ Content-Type: application/json
     "comment": "yes it's bd"
 }
 
+###
+
+POST /v1/login HTTP/1.1
+Host: 127.0.0.1:5500
+Content-Type: application/json
+
+{
+    "userName": "vishkasorrow40"
+}
+
+###
+
+POST /v1/login HTTP/1.1
+Host: 127.0.0.1:5500
+Content-Type: application/json
+
+{
+    "userName": "speedrun po veby"
+}
+
+###
+POST /v1/login HTTP/1.1
+Host: 127.0.0.1:5500
+Content-Type: application/json
+
+{
+    "userName": "VikaChernyshova"
+}
+
+###
+
+POST /v1/models HTTP/1.1
+api: eaaa9f80-f414-41d5-b0c3-13effc8e8dcc
+Host: 127.0.0.1:5500
+Content-Type: application/json
+
+{
+
+    "userName": "sessia mod",
+    "modelName": "speedrun po veby",
+    "code": "avabvba",
+    "description": "chert echo delat 10-12 labi",
+    "comments" : []
+}
+
+
+###
+PUT  /v1/models/6485e25c526c733ddd12fdf8 HTTP/1.1
+api: eaaa9f80-f414-41d5-b0c3-13effc8e8dcc
+Host: 127.0.0.1:5500
+Content-Type: application/json
+
+{
+    "userName": "sessia mod",
+    "modelName": "speedrun po veby",
+    "code": ["mne need", "pomosch psihologa"],
+    "description": "chert echo delat 10-12 labi",
+    "comments": ["6485e25c526c733ddd12fdf8", "45678"]
+}
+
+###
+
+POST /v1/models HTTP/1.1
+api: 48eeee2d-9472-4354-aacf-c126137d7b1e
+Host: 127.0.0.1:5500
+Content-Type: application/json
+
+{
+    "userName": "vishkasorrow40",
+    "modelName": "recept vozdushnogo bize",
+    "code": ["berem", "2 cold eags"],
+    "description": "i vzbaltyvaem",
+    "comments": ["avavavava", "chcavhvahvvhchav"]
+}
+###
+DELETE /v1/logout?API=6485e45a526c733ddd12fdfb HTTP/1.1
+###
+GET  /v1/models HTTP/1.1
+Host: 127.0.0.1:5500
+
+###
+DELETE /v1/models/64860f71526c733ddd12fdfed HTTP/1.1
+api: 48e08d2d-9472-4354-aacf-c126137d567e
+Host: 127.0.0.1:5500
+###
+
+POST /v1/models HTTP/1.1
+api: 48e08d2d-9472-4354-aacf-c126137d567e
+Host: 127.0.0.1:5500
+Content-Type: application/json
+
+{
+    "userName": "vishkasorrow40",
+    "modelName": "for delete",
+    "code": ["1" ],
+    "description": "",
+    "comments": ["del", "ete"]
+}
+###
+GET /v1/models/6485e25c526c733ddd12fdf8 HTTP/1.1
+api:eaaa9f80-f414-41d5-b0c3-13effc8e8dcc
+Host: 127.0.0.1:5500
+###

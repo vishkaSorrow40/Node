@@ -1,9 +1,11 @@
 const express = require('express');
 const router = express.Router();
 
-
 router.use(express.json());
+
 const commentsController = require("../controllers/comm");
+const apiController = require("../controllers/apicntrl");
+const modelsController=require("../controllers/modelscntrl");
 
 var users = { 'user_agent': 0 };
 var comm = [];
@@ -17,6 +19,18 @@ router.get('/', function (req, res) {
 router.get("/dbcomments", commentsController.getAllComments);
 router.get("/dbcomments/:id", commentsController.getComment);
 router.post("/dbcomments", express.json(), commentsController.postAddComments);
+
+
+router.post("/login", apiController.getApi);
+router.delete("/logout", apiController.deleteApi);
+
+// Models
+router.get("/models", modelsController.getAllModels);
+router.get("/models/:id", modelsController.getModelId);
+
+router.post("/models", apiController.checkApi, modelsController.addModel);
+router.put("/models/:id", apiController.checkApi, modelsController.updateModel);
+router.delete("/models/:id", apiController.checkApi, modelsController.deleteModelId);
 
 
 router.get('/stats', function (req, res) {
