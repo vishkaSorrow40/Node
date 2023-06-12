@@ -4,20 +4,27 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./awsm.min.css" >
     <title>Document</title>
+    <link rel="stylesheet" href="css/awsm.min.css">
 </head>
 <body>
-    <ul>
-        <li><p>"/" корневой путь, реализован через GET-запрос, открывает данную страницу</p></li>
-        <li><p>"/stats" - возвращает запросы через GET-запрос</p></li>
-        <li><p>"/comments" - показывает комментарии через POST-запрос</p></li>
-        <li><p>"/users?apiKey=kotiki"- через POST-запрос происходит авторизация
-        </p></li>
-        <li><p>"/dbcomments" - показывает комментарии из базы данных через GET-запрос</p></li>
-        <li><p>"/dbcomments/:id" - показывает комментарий с конкретным id из базы данных через GET-запрос</p></li>
-        <li><p>"/dbcomments" - добавляет комментарий в базу данных через POST-запрос</p></li>
-        
-    </ul>
+    <h1>3D Models</h1>
+  
+    <form>
+        <input type="hidden" name="form1" value="api">
+        <fieldset>
+            <legend>Api-key</legend>
+            <div>
+                <label>
+                    api 
+                    <input id="apik" type="text"  placeholder="0000-0000-0000-0000">
+                    <button id="signup">Sign Up</button>
+                    <button id="login">Log In</button>
+                </label>
+            </div>
+    </form>
+    <div id="models"></div>
+    <button id="updateBut">Update</button>
+    <script src="fetch.js" defer></script>
 </body>
 </html>
