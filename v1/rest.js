@@ -110,29 +110,28 @@ router.delete("/logout", apiController.deleteApi);
  *        '500':
  *          description: ошибка сервера, не удалось получить модель. 
 */
+/**
+ * @swagger
+ * /models:
+ *   get:
+ *     summary: Получить все модели
+ *     responses:
+ *       '200':
+ *         description: Успешный запрос. Возвращает список всех моделей.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/ModelData'
+ *       '500':
+ *         description: Внутренняя ошибка сервера. Запрос не может быть выполнен.
+ */
 
 
 router.get("/models", modelsController.getAllModels);
 router.get("/model/:id", modelsController.getModelId);
 
-/**
- * @swagger
- * /models:
- *  get:
- *      summary: получить все модели из базы.
- *      responses:
- *          '200':
- *            description: возвращает список всех моделей.
- *            content:
- *             application/json:
- *               schema:
- *                 type: array
- *                 items:
- *                   $ref: '#/components/schemas/ModelData'
- *       '500':
- *         description: ошибка сервера, запрос не выполнен
- * /
- * 
 /** 
  * @swagger
  * /model/{id}:
@@ -161,10 +160,6 @@ router.get("/model/:id", modelsController.getModelId);
  *              '500':
  *                  description: ошибка сервера, не удалось получить модель.
  */
-
-router.post("/models", apiController.checkApi, modelsController.addModel);
-router.put("/models/:id", apiController.checkApi, modelsController.updateModel);
-router.delete("/models/:id", apiController.checkApi, modelsController.deleteModelId);
 
 /**
  * @swagger
@@ -201,7 +196,12 @@ router.delete("/models/:id", apiController.checkApi, modelsController.deleteMode
  *       '500':
  *         description:  ошибка сервера, модель не добавлена
  * 
- * /models/{id}:
+ */
+router.post("/models", apiController.checkApi, modelsController.addModel);
+router.put("/models/:id", apiController.checkApi, modelsController.updateModel);
+/**
+ * @swagger
+ * models/{id}:
  *   put:
  *     summary: обновить модель по ID
  *     security:
@@ -247,6 +247,10 @@ router.delete("/models/:id", apiController.checkApi, modelsController.deleteMode
  *       '500':
  *         description: ошибка сервера, не удалось обновить модель.
  * 
+ */
+router.delete("/models/:id", apiController.checkApi, modelsController.deleteModelId);
+/**
+ * @swagger
  * /models/{id}:
  *   delete:
  *     summary: уалить модель по ID
